@@ -5,6 +5,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -73,11 +74,21 @@ export default function ProductCreateRoute() {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Images</Label>
-              <UploadDropzone endpoint="imageUploader" />
-              {/* <UploadButton endpoint="imageUploader" /> */}
+              <UploadDropzone
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                  alert("File uploaded");
+                }}
+                onUploadError={() => {
+                  alert("Something went wring");
+                }}
+              />
             </div>
           </div>
         </CardContent>
+        <CardFooter>
+          <Button>Create Product</Button>
+        </CardFooter>
       </Card>
     </form>
   );
